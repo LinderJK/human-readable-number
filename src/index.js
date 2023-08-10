@@ -3,19 +3,15 @@ module.exports = function toReadable (number) {
     const firstTensOfNumber = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
     const tensOfNumber = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
 
-    //Решение с использованием рекурсии
-
-    //Для чисел от 1 до 9
     function getUnit(num) {
         return unitsOfNumber[num - 1];
     }
 
-    //Для чисел от 10 до 19
+
     function getFirstTens(num) {
         return firstTensOfNumber[num - 10];
     }
 
-    //Для всех десятков
     function getTens(num) {
         const ten = tensOfNumber[Math.floor(num / 10)];
         const unit = getUnit(num % 10);
@@ -36,7 +32,6 @@ module.exports = function toReadable (number) {
 
     }
 
-    //Для сотен
     function getHundreds(num) {
         const hundred = getUnit(Math.floor(num / 100));
         const restNum = getTens(num % 100);
@@ -50,7 +45,6 @@ module.exports = function toReadable (number) {
         return `${hundred} hundred ${restNum}`;
     }
 
-    //Для тысяч
     function getThousand(num) {
 
         const thousand = getUnit(Math.floor(num / 1000));
@@ -62,8 +56,6 @@ module.exports = function toReadable (number) {
         return `${thousand} thousand ${resNum}`
     }
 
-
-    //Проверка введенного числа и вызов функций
     if (number < 0) {
         return 'Please input a positive number';
 
